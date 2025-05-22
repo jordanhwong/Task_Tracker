@@ -1,0 +1,14 @@
+C:\Users\jorda\Desktop\Task_Tracker\bin\Debug\net9.0\Task_Tracker.exe
+C:\Users\jorda\Desktop\Task_Tracker\bin\Debug\net9.0\Task_Tracker.deps.json
+C:\Users\jorda\Desktop\Task_Tracker\bin\Debug\net9.0\Task_Tracker.runtimeconfig.json
+C:\Users\jorda\Desktop\Task_Tracker\bin\Debug\net9.0\Task_Tracker.dll
+C:\Users\jorda\Desktop\Task_Tracker\bin\Debug\net9.0\Task_Tracker.pdb
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.AssemblyInfoInputs.cache
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.AssemblyInfo.cs
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.csproj.CoreCompileInputs.cache
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.dll
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\refint\Task_Tracker.dll
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.pdb
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\Task_Tracker.genruntimeconfig.cache
+C:\Users\jorda\Desktop\Task_Tracker\obj\Debug\net9.0\ref\Task_Tracker.dll
