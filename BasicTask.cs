@@ -140,7 +140,31 @@ namespace TaskManager
             return;
         }
 
-        
+        public static void DeleteTask(int taskId)
+        {
+            if (!File.Exists("tasks.json") || string.IsNullOrWhiteSpace(File.ReadAllText("tasks.json")))
+            {
+                Console.WriteLine("No tasks found.");
+                return;
+            }
+
+            List<BasicTask> tasks = JsonSerializer.Deserialize<List<BasicTask>>(File.ReadAllText("tasks.json"))!;
+            int maxId = tasks.Max(t => t.Id);
+            if (taskId < 1 || taskId > maxId)
+            {
+                Console.WriteLine($"Task ID {taskId} does not exist.");
+                return;
+            }
+
+            tasks.RemoveAt(taskId - 1);
+            for (int i = taskId - 1; i < tasks.Count; i++)
+            {
+                tasks[i].Id = i + 1;
+            }
+            string updatedJson = JsonSerializer.Serialize(tasks);
+            File.WriteAllText("tasks.json", updatedJson);
+            return;
+        }
     }
 
 }

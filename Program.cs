@@ -102,7 +102,17 @@ switch (command)
         BasicTask.UpdateTask(taskId, newDescription);
         break;
     case "delete":
-        // Delete logic here
+        if (args.Length < 2)
+        {
+            Console.WriteLine("Usage: delete <task_id>");
+            return;
+        }
+        if (!int.TryParse(args[1], out taskId))
+        {
+            Console.WriteLine("Invalid task ID.");
+            return;
+        }
+        BasicTask.DeleteTask(taskId);
         break;
     default:
         Console.WriteLine("Unknown command. Use 'help' for a list of commands.");
