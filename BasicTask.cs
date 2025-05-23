@@ -42,17 +42,12 @@ namespace TaskManager
                 Console.WriteLine($"Task ID {taskId} does not exist.");
                 return;
             }
-            
+
             tasks[taskId - 1].CurrentStatus = newStatus;
             tasks[taskId - 1].UpdatedAt = DateTime.Now;
             string updatedJson = JsonSerializer.Serialize(tasks);
             File.WriteAllText("tasks.json", updatedJson);
             return;
-        }
-
-        public void MarkDone()
-        {
-            CurrentStatus = Status.Done;
         }
 
         public static void AddTask(string description)
@@ -90,6 +85,37 @@ namespace TaskManager
             return;
         }
 
+        public static void ListTasks()
+        {
+            if (!File.Exists("tasks.json") || string.IsNullOrWhiteSpace(File.ReadAllText("tasks.json")))
+            {
+                Console.WriteLine("No tasks found.");
+                return;
+            }
+
+            List<BasicTask> tasks = JsonSerializer.Deserialize<List<BasicTask>>(File.ReadAllText("tasks.json"))!;
+            foreach (var task in tasks)
+            {
+                Console.WriteLine($"ID: {task.Id}, Description: {task.Description}, Status: {task.CurrentStatus}, Created At: {task.CreatedAt}, Updated At: {task.UpdatedAt}");
+            }
+            return;
+        }
+
+        public static void ListTasks(Status status)
+        {
+            if (!File.Exists("tasks.json") || string.IsNullOrWhiteSpace(File.ReadAllText("tasks.json")))
+            {
+                Console.WriteLine("No tasks found.");
+                return;
+            }
+
+            List<BasicTask> tasks = JsonSerializer.Deserialize<List<BasicTask>>(File.ReadAllText("tasks.json"))!;
+            foreach (var task in tasks.Where(t => t.CurrentStatus == status))
+            {
+                Console.WriteLine($"ID: {task.Id}, Description: {task.Description}, Status: {task.CurrentStatus}, Created At: {task.CreatedAt}, Updated At: {task.UpdatedAt}");
+            }
+            return;
+        }
     }
 
 }

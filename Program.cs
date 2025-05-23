@@ -55,7 +55,32 @@ switch (command)
         BasicTask.MarkStatus(taskId, Status.Done);
         break;
     case "list":
-        // List logic here
+        if (args.Length == 1)
+        {
+            BasicTask.ListTasks();
+            return;
+        }
+        else
+        {
+            string filter = args[1].ToLower();
+            if (filter == "todo")
+            {
+                BasicTask.ListTasks(Status.ToDo);
+            }
+            else if (filter == "in-progress")
+            {
+                BasicTask.ListTasks(Status.InProgress);
+            }
+            else if (filter == "done")
+            {
+                BasicTask.ListTasks(Status.Done);
+            }
+            else
+            {
+                Console.WriteLine("Invalid filter. Use 'todo', 'in-progress', or 'done'.");
+                return;
+            }
+        }
         break;
     case "update":
         // Update logic here
