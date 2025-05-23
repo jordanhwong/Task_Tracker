@@ -207,7 +207,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name -  jordanhwong1@gmail.com
+Jordan Wong -  jordanhwong1@gmail.com
 
 Project Link: [https://github.com/jordanhwong/Task_Tracker](https://github.com/jordanhwong/Task_Tracker)
 
