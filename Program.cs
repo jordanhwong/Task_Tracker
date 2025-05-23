@@ -28,7 +28,32 @@ switch (command)
         }
         BasicTask.AddTask(description);
         break;
-    
+    case "mark-in-progress":
+        if (args.Length < 2)
+        {
+            Console.WriteLine("Usage: mark-in-progress <task_id>");
+            return;
+        }
+        if (!int.TryParse(args[1], out int taskId))
+        {
+            Console.WriteLine("Invalid task ID.");
+            return;
+        }
+        BasicTask.MarkStatus(taskId, Status.InProgress);
+        break;
+    case "mark-done":
+        if (args.Length < 2)
+        {
+            Console.WriteLine("Usage: mark-done <task_id>");
+            return;
+        }
+        if (!int.TryParse(args[1], out taskId))
+        {
+            Console.WriteLine("Invalid task ID.");
+            return;
+        }
+        BasicTask.MarkStatus(taskId, Status.Done);
+        break;
     case "list":
         // List logic here
         break;

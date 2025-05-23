@@ -27,9 +27,27 @@ namespace TaskManager
             UpdatedAt = DateTime.Now;
         }
 
-        public void MarkInProgress()
+        public static void MarkStatus(int taskId, Status newStatus)
         {
-            CurrentStatus = Status.InProgress;
+            if (!File.Exists("tasks.json") || string.IsNullOrWhiteSpace(File.ReadAllText("tasks.json")))
+            {
+                Console.WriteLine("No tasks found.");
+                return;
+            }
+
+            List<BasicTask> tasks = JsonSerializer.Deserialize<List<BasicTask>>(File.ReadAllText("tasks.json"))!;
+            int maxId = tasks.Max(t => t.Id);
+            if (taskId < 1 || taskId > maxId)
+            {
+                Console.WriteLine($"Task ID {taskId} does not exist.");
+                return;
+            }
+            
+            tasks[taskId - 1].CurrentStatus = newStatus;
+            tasks[taskId - 1].UpdatedAt = DateTime.Now;
+            string updatedJson = JsonSerializer.Serialize(tasks);
+            File.WriteAllText("tasks.json", updatedJson);
+            return;
         }
 
         public void MarkDone()
@@ -48,6 +66,7 @@ namespace TaskManager
 
             string jsonString = File.ReadAllText("tasks.json");
 
+            // Check if json is empty
             if (jsonString == "")
             {
                 BasicTask initialTask = new BasicTask(1, description);
@@ -59,6 +78,7 @@ namespace TaskManager
 
             tasks = JsonSerializer.Deserialize<List<BasicTask>>(jsonString)!;
 
+            //Find id value
             int id = tasks.Count > 0 ? tasks.Max(t => t.Id) + 1 : 1;
 
             // Append new task to the json file
