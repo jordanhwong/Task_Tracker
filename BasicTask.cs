@@ -116,6 +116,31 @@ namespace TaskManager
             }
             return;
         }
+
+        public static void UpdateTask(int taskId, string newDescription)
+        {
+            if (!File.Exists("tasks.json") || string.IsNullOrWhiteSpace(File.ReadAllText("tasks.json")))
+            {
+                Console.WriteLine("No tasks found.");
+                return;
+            }
+
+            List<BasicTask> tasks = JsonSerializer.Deserialize<List<BasicTask>>(File.ReadAllText("tasks.json"))!;
+            int maxId = tasks.Max(t => t.Id);
+            if (taskId < 1 || taskId > maxId)
+            {
+                Console.WriteLine($"Task ID {taskId} does not exist.");
+                return;
+            }
+
+            tasks[taskId - 1].Description = newDescription;
+            tasks[taskId - 1].UpdatedAt = DateTime.Now;
+            string updatedJson = JsonSerializer.Serialize(tasks);
+            File.WriteAllText("tasks.json", updatedJson);
+            return;
+        }
+
+        
     }
 
 }

@@ -83,7 +83,23 @@ switch (command)
         }
         break;
     case "update":
-        // Update logic here
+        if (args.Length < 3)
+        {
+            Console.WriteLine("Usage: update <task_id> <new_description>");
+            return;
+        }
+        if (!int.TryParse(args[1], out taskId))
+        {
+            Console.WriteLine("Invalid task ID.");
+            return;
+        }
+        string newDescription = args[2];
+        if (string.IsNullOrWhiteSpace(newDescription))
+        {
+            Console.WriteLine("New description cannot be empty.");
+            return;
+        }
+        BasicTask.UpdateTask(taskId, newDescription);
         break;
     case "delete":
         // Delete logic here
