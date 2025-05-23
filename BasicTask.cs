@@ -47,6 +47,7 @@ namespace TaskManager
             tasks[taskId - 1].UpdatedAt = DateTime.Now;
             string updatedJson = JsonSerializer.Serialize(tasks);
             File.WriteAllText("tasks.json", updatedJson);
+            Console.WriteLine($"Task ID {taskId} status updated to {newStatus}.");
             return;
         }
 
@@ -137,6 +138,7 @@ namespace TaskManager
             tasks[taskId - 1].UpdatedAt = DateTime.Now;
             string updatedJson = JsonSerializer.Serialize(tasks);
             File.WriteAllText("tasks.json", updatedJson);
+            Console.WriteLine($"Task ID {taskId} updated successfully.");
             return;
         }
 

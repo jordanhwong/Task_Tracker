@@ -12,6 +12,13 @@ switch (command)
 {
     case "help":
         Console.WriteLine("Usage: run <command> [options]");
+        Console.WriteLine("Commands: \n" +
+                          "  add\t\t\tAdd a new task with the given description\n" +
+                          "  mark-in-progress\tMark a task as in progress\n" +
+                          "  mark-done\t\tMark a task as done\n" +
+                          "  list\t\t\tList all tasks or filter by status (todo, in-progress, done)\n" +
+                          "  update\t\tUpdate the description of a task\n" +
+                          "  delete\t\tDelete a task");
         break;
     
     case "add":

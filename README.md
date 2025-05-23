@@ -18,35 +18,34 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![project_license][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+-->
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/jordanhwong/Task_Tracker">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Task Tracker</h3>
 
   <p align="center">
-    project_description
+    As based on <a href="https://roadmap.sh/projects/task-tracker">roadmap.sh</a> specifications
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jordanhwong/Task_Tracker"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/jordanhwong/Task_Tracker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/jordanhwong/Task_Tracker/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -83,24 +82,23 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Task Tracker Screen Shot][product-screenshot]](https://roadmap.sh/projects/task-tracker)
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
+This task tracker can handle basic operations, stored in a json file. Operations include the following:
+* <b>Add a task</b>: Appends a new task with description to the end of the tracker.
+* <b>Update a task</b>: Updates the description of a task based on ID.
+* <b>Delete a task</b>: Deletes a task based on ID, shifting task IDs after it.
+* <b>Mark a task</b>: Mark a task baed on ID to either in-progress or done.
+* <b>List</b>: Lists all tasks be default, or all tasks of a certain status.
+* <b>Help</b>: Lists all possible commands.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-### Built With
+### Built in
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* C# .NET
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,37 +107,29 @@ Here's a blank template to get started. To avoid retyping too much info, do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Due to the basic nature of this project, it is likely that cloning this repository should allow you to run the project just fine. However, for completionism it can noted that <a href="https://dotnet.microsoft.com/en-us/download">C# .NET</a> is required, and can be downloaded via the launcher through the hyperlink.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/jordanhwong/Task_Tracker.git
    ```
-3. Install NPM packages
+2. Build the project
+    ```sh
+    dotnet build
+    ```
+3. Change git remote url to avoid accidental pushes to base project
    ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
+   git remote set-url origin <NEW_GIT_URL_HERE>
    git remote -v # confirm the changes
    ```
+4. Run the project with specified arguments
+    ```sh
+    dotnet run <command> <args>
+    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,15 +138,30 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To run, use .NET's CLI compiler with the action you wish to do. 
+```sh
+dotnet run <command> <args>
+```
+Below is example usage of the program:
+```sh
+dotnet run add "Clean the bathroom"
+Task added successfully: (ID: 1)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+dotnet run list              
+ID: 1, Description: Clean the bathroom, Status: ToDo, Created At: 5/22/2025 9:35:17 PM, Updated At: 5/22/2025 9:35:17 PM
+
+dotnet run mark-done 1
+Task ID 1 status updated to Done.
+
+dotnet run list done  
+ID: 1, Description: Clean the bathroom, Status: Done, Created At: 5/22/2025 9:35:17 PM, Updated At: 5/22/2025 9:37:20 PM
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- ROADMAP -->
+<!-- 
+ROADMAP
 ## Roadmap
 
 - [ ] Feature 1
@@ -164,13 +169,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/jordanhwong/Task_Tracker/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+ -->
 
 
-
-<!-- CONTRIBUTING -->
+<!-- CONTRIBUTING
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -184,61 +189,62 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-### Top contributors:
+<!-- ### Top contributors:
 
-<a href="https://github.com/github_username/repo_name/graphs/contributors">
+<a href="https://github.com/jordanhwong/Task_Tracker/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=github_username/repo_name" alt="contrib.rocks image" />
-</a>
+</a> -->
 
 
-
-<!-- LICENSE -->
+<!-- 
+LICENSE
 ## License
 
 Distributed under the project_license. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+ -->
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Your Name -  jordanhwong1@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/jordanhwong/Task_Tracker](https://github.com/jordanhwong/Task_Tracker)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- 
 
-
-<!-- ACKNOWLEDGMENTS -->
+ ACKNOWLEDGMENTS 
 ## Acknowledgments
 
 * []()
 * []()
 * []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> 
+-->
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[contributors-url]: https://github.com/jordanhwong/Task_Tracker/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
+[forks-url]: https://github.com/jordanhwong/Task_Tracker/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
+[stars-url]: https://github.com/jordanhwong/Task_Tracker/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
+[issues-url]: https://github.com/jordanhwong/Task_Tracker/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[license-url]: https://github.com/jordanhwong/Task_Tracker/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/jordanhwong
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
